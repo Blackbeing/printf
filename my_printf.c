@@ -9,8 +9,8 @@ int _printf(const char *format, ...)
 
 	c_l ops[] = {
 		{"c", print_char},
-		{"s", print_char},
-		{"%", print_char},
+		{"s", print_str},
+		{"%", print_perc},
 		{NULL, NULL},
 	};
 
@@ -30,9 +30,3 @@ int _printf(const char *format, ...)
 	return (0);
 
 }
-int main(void)
-{
-	_printf("c", 'j');
-	return (0);
-}
-

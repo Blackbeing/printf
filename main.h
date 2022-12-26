@@ -15,6 +15,8 @@ typedef struct c_list
 	void (*func)(va_list args);
 } c_l;
 void print_char(va_list args);
+void print_str(va_list args);
+void print_perc(va_list args);
 
 
 #endif /* MAIN_H */

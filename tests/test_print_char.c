@@ -5,14 +5,15 @@ void _print_test(unsigned int n, ...);
 void _print_test(unsigned int n, ...)
 {
 	va_list args;
+	int bytes = 0;
 	va_start(args, n);
-	print_char(args);
+	bytes = print_char(args);
+	printf(" -> %d bytes\n", bytes);
 }
 
 int main(void)
 {
 	_print_test(1, 't');
-	printf("\n");
 
 	return (0);
 }

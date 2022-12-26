@@ -9,14 +9,19 @@ int _printf(const char *format, ...);
 int _write(char);
 
 
-typedef struct c_list 
+/**
+ * struct c_list - c list struct
+ * @fmt: str arg
+ * @func: pointer to func
+ */
+typedef struct c_list
 {
 	char *fmt;
-	void (*func)(va_list args);
+	int (*func)(va_list args);
 } c_l;
-void print_char(va_list args);
-void print_str(va_list args);
-void print_perc(va_list args);
 
+int print_char(va_list args);
+int print_str(va_list args);
+int print_perc(va_list args);
 
 #endif /* MAIN_H */

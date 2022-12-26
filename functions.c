@@ -1,31 +1,63 @@
 #include "main.h"
 
+/**
+ * _write - Print char to stdout
+ * @c: char to print
+ * Return: Number of bytes written to buffer
+ */
+
 int _write(char c)
 {
-	return write(1, &c, sizeof(c));
+	return (write(1, &c, sizeof(c)));
 }
 
-void print_char(va_list args)
+/**
+ * print_char - Print character
+ * @args: va_list object
+ *
+ * Return: Number of bytes written to buffer
+ */
+
+int print_char(va_list args)
 {
-	_write(va_arg(args, int));
+	return (_write(va_arg(args, int)));
 }
 
-void print_str(va_list args)
+/**
+ * print_str - Print string
+ * @args: va_list object
+ *
+ * Return: Number of bytes written to buffer
+ */
+
+int print_str(va_list args)
 {
 	int i;
+	int bytes;
 	char *str = va_arg(args, char *);
 
+	bytes = 0;
 	if (str != NULL)
 	{
 		i = 0;
 		while (str[i])
 		{
-			_write(str[i]);
+			bytes += _write(str[i]);
 			i++;
 		}
 	}
+	return (bytes);
 }
-void print_perc(va_list args)
+
+/**
+ * print_perc - Print percent
+ * @args: va_list object
+ *
+ * Return: Number of bytes written to buffer
+ */
+
+int print_perc(va_list args)
 {
-	_write('%');
+	(void)(args);
+	return (_write('%'));
 }

@@ -1,11 +1,18 @@
 #include "main.h"
-#include "functions.c"
+
+/**
+ * _printf - Print according to format specified
+ * @format: string format
+ *
+ * Return: Number of bytes written
+ */
 
 int _printf(const char *format, ...)
 {
 	unsigned int fmt_counter = 0;
 	va_list args;
 	unsigned int ops_counter;
+	unsigned int bytes = 0;
 
 	c_l ops[] = {
 		{"c", print_char},
@@ -23,10 +30,10 @@ int _printf(const char *format, ...)
 		while (ops_counter < 3)
 		{
 			if (format[fmt_counter] == *ops[ops_counter].fmt)
-				ops[ops_counter].func(args);
+				bytes += ops[ops_counter].func(args);
 			ops_counter++;
 		}
 	}
-	return (0);
+	return (bytes);
 
 }

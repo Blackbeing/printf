@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 		{"%", print_perc},
 		{NULL, NULL},
 	};
+	if (format == NULL)
+		return (-1);
 
 	va_start(args, format);
 

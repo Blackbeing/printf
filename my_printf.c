@@ -17,6 +17,7 @@ int _printf(const char *format, ...)
 	c_l ops[] = {
 		{"c", print_char},
 		{"s", print_str},
+		{"%", print_perc},
 		{NULL, NULL},
 	};
 
@@ -28,7 +29,7 @@ int _printf(const char *format, ...)
 		{
 			fmt_counter++;
 			ops_counter = 0;
-			while (ops_counter < 2)
+			while (ops_counter < 3)
 			{
 				if (format[fmt_counter] == *(ops[ops_counter]).fmt)
 				{

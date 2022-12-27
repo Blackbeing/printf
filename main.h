@@ -23,5 +23,7 @@ typedef struct c_list
 int print_char(va_list args);
 int print_str(va_list args);
 int print_perc(va_list args);
+int print_num(va_list args);
+int print_num_recursively(int n);
 
 #endif /* MAIN_H */

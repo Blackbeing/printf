@@ -37,7 +37,16 @@ int print_str(va_list args)
 	char *str = va_arg(args, char *);
 
 	bytes = 0;
-	if (str != NULL)
+	if (str == NULL)
+	{
+		bytes += _write('(');
+		bytes += _write('n');
+		bytes += _write('u');
+		bytes += _write('l');
+		bytes += _write('l');
+		bytes += _write(')');
+	}
+	else
 	{
 		i = 0;
 		while (str[i])

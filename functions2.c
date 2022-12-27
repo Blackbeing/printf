@@ -26,12 +26,12 @@ int print_num(va_list args)
 int print_num_recursively(int n)
 {
 	int bytes = 0;
-	int i = n;
+	unsigned int i = n;
 
 	if (n < 0)
 	{
 		bytes += _write('-');
-		i = -i;
+		i *= -1;
 	}
 	if (n / 10)
 		bytes += print_num_recursively(i / 10);

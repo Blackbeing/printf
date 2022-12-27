@@ -22,7 +22,6 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
-
 	while (format && format[fmt_counter])
 	{
 		if (format[fmt_counter] == '%')
@@ -30,7 +29,6 @@ int _printf(const char *format, ...)
 			fmt_counter++;
 			if (format[fmt_counter] == '\0')
 				return (-1);
-
 			ops_counter = 0;
 			while (ops_counter < 3)
 			{
@@ -38,7 +36,10 @@ int _printf(const char *format, ...)
 					bytes += ops[ops_counter].func(args);
 				ops_counter++;
 			}
-			fmt_counter++;
+			if (ops_counter < 3)
+				fmt_counter++;
+			else
+				bytes += _write('%');
 		}
 		else
 		{

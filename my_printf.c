@@ -9,10 +9,8 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int fmt_counter = 0;
+	unsigned int fmt_counter = 0, ops_counter = 0, bytes = 0;
 	va_list args;
-	unsigned int ops_counter = 0;
-	unsigned int bytes = 0;
 
 	c_l ops[] = {
 		{"c", print_char},
@@ -30,13 +28,14 @@ int _printf(const char *format, ...)
 		if (format[fmt_counter] == '%')
 		{
 			fmt_counter++;
+			if (format[fmt_counter] == '\0')
+				return (-1);
+
 			ops_counter = 0;
 			while (ops_counter < 3)
 			{
 				if (format[fmt_counter] == *(ops[ops_counter]).fmt)
-				{
 					bytes += ops[ops_counter].func(args);
-				}
 				ops_counter++;
 			}
 			fmt_counter++;
@@ -46,10 +45,7 @@ int _printf(const char *format, ...)
 			bytes += _write(format[fmt_counter]);
 			fmt_counter++;
 		}
-
 	}
-
 	va_end(args);
-
 	return (bytes);
 }

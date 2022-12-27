@@ -25,5 +25,7 @@ int print_str(va_list args);
 int print_perc(va_list args);
 int print_num(va_list args);
 int print_num_recursively(int n);
+int print_bin(va_list args);
+int to_binary(int n);
 
 #endif /* MAIN_H */

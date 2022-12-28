@@ -29,5 +29,6 @@ int print_num_recursively(int n);
 int print_bin(va_list args);
 int to_binary(int n);
 int print_uns(va_list args);
+int print_uint(unsigned int n);
 
 #endif /* MAIN_H */

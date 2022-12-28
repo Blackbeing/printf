@@ -30,5 +30,7 @@ int print_bin(va_list args);
 int to_binary(int n);
 int print_uns(va_list args);
 int print_uint(unsigned int n);
+int print_base_16(va_list args);
+int to_base_16(int n);
 
 #endif /* MAIN_H */

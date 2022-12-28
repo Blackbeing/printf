@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 
 	c_l ops[] = { {"c", print_char}, {"s", print_str}, {"%", print_perc},
 		{"d", print_num}, {"i", print_num}, {"b", print_bin}, {"u", print_uns},
-		{NULL, NULL},
+		{"o", print_base_16}, {NULL, NULL},
 	};
 	if (format == NULL)
 		return (-1);
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			if (format[fmt_counter] == '\0')
 				return (-1);
 			ops_counter = 0;
-			while (ops_counter < 8)
+			while (ops_counter < 9)
 			{
 				if (format[fmt_counter] == *(ops[ops_counter]).fmt)
 				{
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 				}
 				ops_counter++;
 			}
-			if (ops_counter >= 8)
+			if (ops_counter >= 9)
 			{
 				bytes += _write('%');
 				bytes += _write(format[fmt_counter]);

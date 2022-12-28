@@ -13,12 +13,18 @@ int print_uns(va_list args)
 	unsigned int i;
 	int bytes = 0;
 
+	if (n == 0)
+	{
+		bytes += _write('0');
+		return (bytes);
+	}
+
 	if (n > 0)
 		bytes += print_num_recursively(n);
 
 	else if (n < 0)
 	{
-		i = (unsigned int) (n + INT_MAX + 1) + INT_MAX;
+		i = (unsigned int) (n + INT_MAX + 2) + INT_MAX;
 		bytes += print_uint(i);
 	}
 	return (bytes);

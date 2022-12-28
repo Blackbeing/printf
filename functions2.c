@@ -50,7 +50,7 @@ int print_num_recursively(int n)
 int print_bin(va_list args)
 {
 	int n = va_arg(args, int);
-	unsigned int i = n;
+	int i = n;
 	int bytes = 0;
 
 	bytes += to_binary(i);
@@ -67,16 +67,40 @@ int print_bin(va_list args)
 
 int to_binary(int n)
 {
+	int size = sizeof(n) * 8, b = 0, i = 0;
 	int bytes = 0;
-	unsigned int quot = 0, rem = 0;
+	int t = n;
+	int one_flag = 0; /* flag, indicate if 1 has been encountered, */
 
-	if (n == 0)
-		return (0);
+	for (i = size - 1; i >= 0; i--)
+	{
+		/**
+		 * 2's Complement representation
+		 */
 
-	quot = n / 2;
-	rem = n % 2;
-	bytes += to_binary(quot);
-	bytes += _write(rem + '0');
+		if (n < 0)
+		{
+			b = (t >> i) & 1 ? 1 : 0;
+			bytes += _write(b + '0');
+		}
+		else
+		{
+			b = (t >> i) & 1;
+			if (t == 0)
+			{
+				bytes += _write('0');
+				break;
+			}
 
+			if (b)
+			{
+				one_flag = 1;
+				bytes += _write(b + '0');
+			}
+			else if (one_flag)
+				bytes += _write(b + '0');
+		}
+
+	}
 	return (bytes);
 }

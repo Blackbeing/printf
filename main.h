@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
 
 int _printf(const char *format, ...);
 int _write(char);
@@ -27,5 +28,6 @@ int print_num(va_list args);
 int print_num_recursively(int n);
 int print_bin(va_list args);
 int to_binary(int n);
+int print_uns(va_list args);
 
 #endif /* MAIN_H */
